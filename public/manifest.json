@@ -1,10 +1,10 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Random Boobs",
+  "name": "(.)(.) is love - (.)(.) is life",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "192x192",
+      "src": "nvt_logo_square50x50.png",
+      "sizes": "50x50",
       "type": "image/png"
     }
   ],

@@ -46,12 +46,16 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Random (.)(.)</h1>
-	        {this.state.fetchingBoobs && <img
-		        src={require('./loading-balls.svg')}
-	        />}
+	        {
+	          this.state.fetchingBoobs &&
+	          <img
+			        src={require('./loading-balls.svg')}
+			        alt=''
+		        />
+	        }
         </header>
         <p className="App-intro">
-          We all know woman boobs make this world more interesting ;)
+          We all know woman (.)(.) make this world more interesting ;)
         </p>
 	      
 	      <img

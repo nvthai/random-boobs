@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import 'whatwg-fetch'
-import {pathOr} from 'ramda'
+import { pathOr } from 'ramda'
 // eslint-disable-next-line
 import logo from './logo.svg'
 import './App.css'
 
 class App extends Component {
-	constructor (props) {
-		super(props)
+	constructor ( props ) {
+		super( props )
 		this.state = {
 			fetchingBoobs: true,
 			boobs_url: "https://media1.giphy.com/media/cwHQOWenYfnQA/giphy.gif"
@@ -19,55 +19,63 @@ class App extends Component {
 	}
 
 	randomBoobs = () => {
-		this.setState({fetchingBoobs: true})
-		fetch(`https://api.giphy.com/v1/gifs/random?api_key=${process.env.REACT_APP_GIPHY_KEY}&tag=boobs&rating=R`)
-			.then(response => {
+		this.setState( { fetchingBoobs: true } )
+		fetch( `https://api.giphy.com/v1/gifs/random?api_key=${ process.env.REACT_APP_GIPHY_KEY }&tag=boobs&rating=R` )
+			.then( response => {
 				return response.json()
-			})
-			.then(json => {
-				const boobs_url = pathOr('http://via.placeholder.com/350x150', ['data', 'image_url'], json)
-				console.log('%c boobs_url', 'background: red; color: white', boobs_url)
-				this.setState({boobs_url})
-			})
-			.catch(error => {
-				console.log('%c error', 'background: red; color: white', error)
-				this.setState({
+			} )
+			.then( json => {
+				const boobs_url = pathOr( 'http://via.placeholder.com/350x150', [ 'data', 'image_url' ], json )
+				console.log( '%c boobs_url', 'background: red; color: white', boobs_url )
+				this.setState( { boobs_url } )
+			} )
+			.catch( error => {
+				console.log( '%c error', 'background: red; color: white', error )
+				this.setState( {
 					fetchingBoobs: false
-				})
-			})
+				} )
+			} )
 	}
 
 	boobsLoaded = () => {
-		this.setState({fetchingBoobs: false})
+		this.setState( { fetchingBoobs: false } )
 	}
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Random (.)(.)</h1>
-	        {
-	          this.state.fetchingBoobs &&
-	          <img
-			        src={require('./loading-balls.svg')}
-			        alt=''
-		        />
-	        }
-        </header>
-        <p className="App-intro">
-          We all know woman (.)(.) make this world more interesting ;)
+	render () {
+		return (
+			<div className="App">
+				<header className="App-header">
+					<h1 className="App-title">Random (.)(.)</h1>
+				</header>
+
+				<p className="App-intro">
+					We all know woman (.)(.) make this world more interesting ;)
+				</p>
+				<p>
+					Touch on (.)(.) and enjoy!
         </p>
-	      
-	      <img
-		      src={this.state.boobs_url}
-		      alt="Click to random new (.)(.)"
-		      className='Boobs'
-		      onLoad={this.boobsLoaded}
-		      onClick={this.randomBoobs}
-	      />
-      </div>
-    );
-  }
+
+				<img
+					src={this.state.boobs_url}
+					alt="Click to random new (.)(.)"
+					className='Boobs'
+					onLoad={this.boobsLoaded}
+					onClick={this.randomBoobs}
+				/>
+
+				{
+					this.state.fetchingBoobs &&
+					<div>
+						<img
+							src={require( './loading-balls.svg' )}
+							alt=''
+						/>
+						<p>Boobs is coming ...</p>
+					</div>
+				}
+			</div>
+		);
+	}
 }
 
 export default App;

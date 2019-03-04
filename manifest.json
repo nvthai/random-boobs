@@ -1,0 +1,15 @@
+{
+  "short_name": "Random Boobs",
+  "name": "(.)(.) is love - (.)(.) is life",
+  "icons": [
+    {
+      "src": "nvt_logo_square50x50.png",
+      "sizes": "50x50",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
